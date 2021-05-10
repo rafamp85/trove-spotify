@@ -36,7 +36,7 @@ export const Details = () => {
             <Header />
             
             <div className="card results">
-                <div className="card-header">
+                <div className="card-header text-center">
                     {name}
                 </div>
                 <img src={urlImage} className="card-img-top med-img" alt={name} />

@@ -11,6 +11,7 @@ export const Results = ({spotifyData, onSubmitForm, disableButton, type}) => {
                 <h2 className="mb-4 font-weight-bold">
                     Result List
                 </h2>
+                <hr />
 
                 <div className="d-flex bd-highlight">
                 <h3 className="p-2 w-100 bd-highlight font-weight-bold">
