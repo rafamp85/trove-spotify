@@ -8,7 +8,7 @@ export const Artist = ({artist}) => {
     const popularity = artist.popularity ? artist.popularity : 0;
 
     const onDetail = () => {
-        history.push(`/details/${artist.id}`);
+        history.push(`/artistDetails/${artist.id}`);
     }
 
     return (
@@ -24,7 +24,9 @@ export const Artist = ({artist}) => {
                         <img src={artist.images[0].url} className="card-img-top min-img" alt={artist.name}></img>
                     </button>
 
-                    : <img src={defaultImg} className="card-img-top min-img" alt={artist.name}></img>
+                    : <button onClick={onDetail}>
+                        <img src={defaultImg} className="card-img-top min-img" alt={artist.name}></img>
+                    </button>
             }
             
         </div>

@@ -4,6 +4,7 @@ import { Artist } from '../artists/Artist';
 export const Tracks = React.memo(({items}) => {
 
     let existsAlbum = false;
+    console.log('Se ejecuta nuevamente')
 
     if( items[0].track_number ) {
         existsAlbum = true;

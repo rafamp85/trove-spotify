@@ -1,7 +1,14 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import defaultImg from '../../img/default.jpeg';
 
 export const Album = React.memo(({album}) => {
+
+    const history = useHistory();
+
+    const onDetail = () => {
+        history.push(`/albumDetails/${album.id}`);
+    }
 
     return (
         <div className="card">
@@ -12,8 +19,13 @@ export const Album = React.memo(({album}) => {
 
             {
                 album.images && album.images.length > 0
-                    ? <img src={album.images[0].url} className="card-img-top min-img" alt={album.name}></img>
-                    : <img src={defaultImg} className="card-img-top min-img" alt={album.name}></img>
+                    ? <button onClick={onDetail}>
+                        <img src={album.images[0].url} className="card-img-top min-img" alt={album.name}></img>
+                    </button>
+                    
+                    : <button onClick={onDetail}>
+                        <img src={defaultImg} className="card-img-top min-img" alt={album.name}></img>
+                    </button>
             }
             
         </div>

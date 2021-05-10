@@ -57,5 +57,20 @@ export const getArtistDetail = async( id ) => {
     } catch (error) {
       throw( error );
     }
-})
+  })
+}
+
+export const getAlbumtDetail = async( id ) => {
+  return await getToken().then(tokenResponse => {      
+    const token = tokenResponse.data.access_token;
+
+    try {
+      return axios(`https://api.spotify.com/v1/albums/${id}`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token}
+      })
+    } catch (error) {
+      throw( error );
+    }
+  })
 }

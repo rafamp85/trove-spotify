@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from '../Header';
 import { Link, useParams } from 'react-router-dom';
-import { getArtistDetail } from '../../utils/axios';
+import { getAlbumtDetail } from '../../utils/axios';
 
 export const Details = () => {
 
-    const [artist, setArtist] = useState({
+    const [album, setAlbum] = useState({
         name: '',
         urlImage: '',
-        popularity: '',
-        followers: ''
+        tracks: []
     });
 
-    const { name, urlImage, popularity, followers } = artist;
-
+    const { name, urlImage, tracks } = album;
 
     const {id} = useParams();
 
     useEffect( () => {
-        getArtistDetail(id)
+        getAlbumtDetail(id)
             .then( (res) => {
                 const data = res.data;
 
-                setArtist({
+                setAlbum({
                     name: data.name,
                     urlImage: data.images[0].url,
-                    popularity: data.popularity,
-                    followers: data.followers.total
+                    tracks: data.tracks.items
                 });
             });
     }, [id]);
@@ -41,8 +38,11 @@ export const Details = () => {
                 </div>
                 <img src={urlImage} className="card-img-top med-img" alt={name} />
                 <div className="card-body">
-                    <p className="card-text">Popularity: {popularity}</p>
-                    <p className="card-text">Followers: {followers}</p>
+                    <h5>Tracks List</h5>
+                    {
+                        tracks.map( (track, idx) => <p key={idx} className="card-text">{track.name}</p> )
+                    }
+
                 </div>
                 <div className="d-grid gap-2 d-md-block">
                     <Link className="btn btn-primary" to="/">Go Back</Link>
